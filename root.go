@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"html/template"
+	"os"
 	"strings"
 	"time"
 
@@ -15,6 +17,7 @@ func init() {
 	RootCommand.Flags().SortFlags = false
 	RootCommand.Flags().Bool("todoke", false, "taishoku todoke")
 	RootCommand.Flags().IntP("offset", "o", 3, "offset")
+	RootCommand.Flags().String("format", "", "format [html]")
 	RootCommand.Flags().IntP("year", "y", 2999, "year")
 	RootCommand.Flags().IntP("month", "m", 12, "month")
 	RootCommand.Flags().IntP("day", "d", 31, "day")
@@ -24,7 +27,6 @@ func init() {
 	RootCommand.Flags().StringP("company", "C", "株式会社ジョークコマンド", "company name")
 	RootCommand.Flags().StringP("president", "P", "代表取締役", "president")
 	RootCommand.Flags().StringP("president-name", "N", "ジョーク山悪ふざけ太郎", "president name")
-	// RootCommand.Flags().Bool("html", false, "output html")
 }
 
 var RootCommand = &cobra.Command{
@@ -135,6 +137,12 @@ Example:
 		}
 		presidentName = toZenkaku(presidentName)
 
+		formatType, err := f.GetString("format")
+		if err != nil {
+			panic(err)
+		}
+		formatType = strings.ToLower(formatType)
+
 		log.Debug(fmt.Sprintf("command line option parameteres. "+
 			"year=%d, month=%d, day=%d, "+
 			"department=%s, team=%s, yourName=%s, "+
@@ -151,8 +159,38 @@ Example:
 		taishokuDate = convertStringNumberToKanji(taishokuDate)
 		today := time.Now().Format("2006年1月2日")
 		today = convertStringNumberToKanji(today)
-		text := makeTaishokuText(tmplText, taishokuDate, today, department, team, yourName, company, president, presidentName)
-		printVertical(text, offset)
+
+		switch formatType {
+		case "html":
+			tmplHtml := taishokuTodokeHTMLTemplate
+			if useTodoke {
+				tmplHtml = taishokuTodokeHTMLTemplate
+			}
+			t, err := template.New("template").Parse(tmplHtml)
+			if err != nil {
+				panic(err)
+			}
+			m := map[string]string{
+				"taishokuDate":  taishokuDate,
+				"today":         today,
+				"department":    department,
+				"team":          team,
+				"yourName":      yourName,
+				"company":       company,
+				"president":     president,
+				"presidentName": presidentName,
+			}
+			if err := t.Execute(os.Stdout, m); err != nil {
+				panic(err)
+			}
+			// case "pdf":
+		case "":
+			text := makeTaishokuText(tmplText, taishokuDate, today, department, team, yourName, company, president, presidentName)
+			printVertical(text, offset)
+		default:
+			log.Error("illegal format. format in [html]: format=" + formatType)
+			os.Exit(1)
+		}
 
 		log.Debug("end 'taishoku'")
 	},
