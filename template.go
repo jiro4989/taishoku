@@ -79,7 +79,7 @@ h1 {
         </div>
         <div>
           <span>{{.president}}</span>
-          <span>{{.presidentName}}</span>
+          <span>{{.presidentName}}殿</span>
         </div>
       </div>
     </div>
@@ -165,7 +165,7 @@ h1 {
         </div>
         <div>
           <span>{{.president}}</span>
-          <span>{{.presidentName}}</span>
+          <span>{{.presidentName}}殿</span>
         </div>
       </div>
     </div>
