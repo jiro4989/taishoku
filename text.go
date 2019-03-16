@@ -31,7 +31,7 @@ func makeTaishokuText(taishokuDate, today, department, team, yourName, company, 
 	for k, v := range convs {
 		text = strings.Replace(text, k, v, 1)
 	}
-	return text
+	return text[1 : len(text)-1]
 }
 
 func convertStringNumberToKanji(s string) string {
