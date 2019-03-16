@@ -33,6 +33,7 @@ taishoku prints Japanese one's resignation ASCII Art.
 
 Repository: https://github.com/jiro4989/taishoku
     Author: jiro4989
+   Version: ` + Version + `
 
 Example:
 
