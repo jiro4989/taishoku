@@ -17,7 +17,7 @@ const taishokuNegai = `
 　　　　　　　　　　　　　　{yourName}　印
 
 {company}
-{president}　{presidentName}
+{president}　{presidentName}殿
 `
 
 const taishokuTodoke = `
@@ -32,7 +32,7 @@ const taishokuTodoke = `
 　　　　　　　　　　　　　　{yourName}　印
 
 {company}
-{president}　{presidentName}
+{president}　{presidentName}殿
 `
 
 // makeTaishokuText は退職テキストを生成する。
