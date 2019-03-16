@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strings"
 	"time"
-	"unicode/utf8"
 
 	"github.com/jiro4989/taishoku/log"
 	"github.com/spf13/cobra"
@@ -136,26 +135,12 @@ func printVertical(s []string, padSize int) {
 		fmt.Println()
 	}
 
-	l := utf8.RuneCountInString(s[0])
 	leftPad := strings.Repeat("　", padSize)
-	for i := 0; i < l; i++ {
-		var line []string
-		for _, row := range s {
-			var colIdx int // rangeで指定する数値は配列の印字ではないため
-			for _, c := range row {
-				if colIdx == i {
-					line = append(line, string(c))
-				}
-				colIdx++
-			}
-		}
-		if len(line) == 0 {
-			continue
-		}
-		line = reverse(line)
-		s := strings.Join(line, "")
-		fmt.Println(leftPad + s)
+	vertical := toVertical(s)
+	for _, v := range vertical {
+		fmt.Println(leftPad + v)
 	}
+
 	// 一番下に空白をもうけたい
 	for i := 0; i < padSize; i++ {
 		fmt.Println()
