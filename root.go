@@ -13,6 +13,7 @@ func init() {
 	cobra.OnInitialize()
 	RootCommand.PersistentFlags().BoolVarP(&log.DebugFlag, "debug", "X", false, "debug logging flag.")
 	RootCommand.Flags().SortFlags = false
+	RootCommand.Flags().IntP("offset", "o", 3, "offset")
 	RootCommand.Flags().IntP("year", "y", 2999, "year")
 	RootCommand.Flags().IntP("month", "m", 12, "month")
 	RootCommand.Flags().IntP("day", "d", 31, "day")
@@ -71,6 +72,11 @@ Example:
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Debug("start 'taishoku'")
 		f := cmd.Flags()
+
+		offset, err := f.GetInt("offset")
+		if err != nil {
+			panic(err)
+		}
 
 		year, err := f.GetInt("year")
 		if err != nil {
@@ -136,7 +142,7 @@ Example:
 		today := time.Now().Format("2006年1月2日")
 		today = convertStringNumberToKanji(today)
 		text := makeTaishokuText(taishokuDate, today, department, team, yourName, company, president, presidentName)
-		printVertical(text, 3)
+		printVertical(text, offset)
 
 		log.Debug("end 'taishoku'")
 	},
