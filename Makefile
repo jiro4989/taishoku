@@ -7,7 +7,7 @@ XBUILD_TARGETS := \
 	-os="windows linux darwin" \
 	-arch="386 amd64" 
 DIST_DIR := dist/$(VERSION)
-README := README.md
+README := README.*
 EXTERNAL_TOOLS := \
 	github.com/mitchellh/gox \
 	github.com/tcnksm/ghr \
@@ -55,8 +55,7 @@ clean: ## バイナリ、配布物ディレクトリを削除する
 bootstrap: ## 外部ツールをインストールする
 	for t in $(EXTERNAL_TOOLS); do \
 		echo "Installing $$t ..." ; \
-		go get $$t ; \
+		GO111MODULE=off go get $$t ; \
 	done
-	gometalinter --install --update
 
 .PHONY: help build install xbuild archive release lint test clean bootstrap
