@@ -1,0 +1,66 @@
+:toc:
+:sectnums:
+
+= taishoku
+
+退職願をアスキーアートで出力するコマンド
+
+== install
+
+[source,bash]
+go get -u github.com/jiro4989/taishoku
+
+== development environment
+
+ go version go1.11 linux/amd64
+
+== usage
+
+[source,bash]
+taishoku
+
+実行結果
+
+ 　　　代株　　　　二退こ　　　　　　
+ 　　　表式　　　　〇職の　　　　　　
+ 　　　取会　　　　一いた　　　　　　
+ 　　　締社　　　　九たび　　退　　　
+ 　　　役ジ　　　　年し一　　　　　　
+ 　　　　ョ　　　　〇た身　　職　　　
+ 　　　ジー　　　　三く上　　　　　　
+ 　　　ョク　　　　月この　　願　　　
+ 　　　ーコ　　　　一こ都　　　　　　
+ 　　　クマ　　　　七に合　　　　　　
+ 　　　山ン　　　　日おに　　　　　　
+ 　　　悪ド　　　　　願よ　　　　　　
+ 　　　ふ　　　　　　いり　　　　　　
+ 　　　ざ　　　　　　申、　　　　　　
+ 　　　け　　真ジ　　し二　　　　　　
+ 　　　太　　面ョ　　上九　　　　　　
+ 　　　郎　　目ー　　げ九　　　　　　
+ 　　　　　　田ク　　ま九　　　　　　
+ 　　　　　　マコ　　す年　　　　　　
+ 　　　　　　ジマ　　。一　　　　　　
+ 　　　　　　メン　　　二　　　　　　
+ 　　　　　　　ド　　　月　　　　　　
+ 　　　　　　印開　　　三　　　　　　
+ 　　　　　　　発　　　一　　　　　　
+ 　　　　　　　部　　　日　　　　　　
+ 　　　　　　　　　　　を　私　　　　
+ 　　　　　　　第　　　も　議　　　　
+ 　　　　　　　一　　　っ　　　　　　
+ 　　　　　　　課　　　て　　　　　　
+
+== usacase
+
+.共同作業者に退職の意図を伝える
+[source,bash]
+taishoku | wall
+
+.唐突に職場を離れることになったときに、次回作業者に退職の意図を伝える
+[source,bash]
+echo taishoku >> ~/.bashrc
+
+.そのまま使う
+[source,bash]
+taishoku --your-name 退職太郎 -y 2019 -m 1 -d 1
