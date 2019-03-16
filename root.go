@@ -122,29 +122,40 @@ Example:
 		}
 		presidentName = toZenkaku(presidentName)
 
+		log.Debug(fmt.Sprintf("command line option parameteres. "+
+			"year=%d, month=%d, day=%d, "+
+			"department=%s, team=%s, yourName=%s, "+
+			"company=%s, president=%s, presidentName=%s",
+			year, month, day,
+			department, team, yourName,
+			company, president, presidentName))
+
 		taishokuDate := fmt.Sprintf("%d年%d月%d日", year, month, day)
 		taishokuDate = convertStringNumberToKanji(taishokuDate)
 		today := time.Now().Format("2006年01月02日")
 		today = convertStringNumberToKanji(today)
 		text := makeTaishokuText(taishokuDate, today, department, team, yourName, company, president, presidentName)
-		arr := strings.Split(text, "\n")
-		arr = padSpace(arr)
-		printVertical(arr, 3)
+		printVertical(text, 3)
 
 		log.Debug("end 'taishoku'")
 	},
 }
 
-func printVertical(s []string, padSize int) {
+// printVertical は横書きの文字列を縦書きにして標準出力する。
+// padSizeで縦横のパディングをする。
+func printVertical(text string, padSize int) {
+	arr := strings.Split(text, "\n")
+	s := padSpace(arr) // 文字列の長さを空白で埋めて均一にする
+
 	// 一番上に空白をもうけたい
 	for i := 0; i < padSize; i++ {
 		fmt.Println()
 	}
 
-	leftPad := strings.Repeat("　", padSize)
-	vertical := toVertical(s)
+	pad := strings.Repeat("　", padSize)
+	vertical := toVertical(s) // 横書きの文章を縦書きに変換
 	for _, v := range vertical {
-		fmt.Println(leftPad + v)
+		fmt.Println(pad + v + pad)
 	}
 
 	// 一番下に空白をもうけたい
