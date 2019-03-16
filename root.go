@@ -22,7 +22,7 @@ func init() {
 	RootCommand.Flags().StringP("company", "C", "株式会社ジョークコマンド", "day")
 	RootCommand.Flags().StringP("president", "P", "代表取締役", "day")
 	RootCommand.Flags().StringP("president-name", "N", "ジョーク山悪ふざけ太郎", "day")
-	RootCommand.Flags().Bool("html", false, "output html")
+	// RootCommand.Flags().Bool("html", false, "output html")
 }
 
 var RootCommand = &cobra.Command{
