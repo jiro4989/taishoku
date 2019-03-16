@@ -52,7 +52,7 @@ h1 {
   <div class="container">
     <div class="vertical-text">
       <h1>退職願</h1>
-      <p style="text-align: right;">私議</p>
+      <p style="text-align: right;">私儀</p>
       <p>
       <span>このたび一身上の都合により、{{.taishokuDate}}をもって<br>
         退職いたしたくここにお願い申し上げます。<br>
@@ -138,7 +138,7 @@ h1 {
   <div class="container">
     <div class="vertical-text">
       <h1>退職届</h1>
-      <p style="text-align: right;">私議</p>
+      <p style="text-align: right;">私儀</p>
       <p>
       <span>このたび一身上の都合により、{{.taishokuDate}}をもって<br>
         退職いたします。<br>

@@ -7,7 +7,7 @@ import (
 
 const taishokuNegai = `
 　　　退　職　願
-　　　　　　　　　　　　　　　　　　　　　　　　　私議
+　　　　　　　　　　　　　　　　　　　　　　　　　私儀
 
 このたび一身上の都合により、{taishokuDate}をもって
 退職いたしたくここにお願い申し上げます。
@@ -22,7 +22,7 @@ const taishokuNegai = `
 
 const taishokuTodoke = `
 　　　退　職　届
-　　　　　　　　　　　　　　　　　　　　　　　　　私議
+　　　　　　　　　　　　　　　　　　　　　　　　　私儀
 
 このたび一身上の都合により、{taishokuDate}をもって
 退職いたします。
