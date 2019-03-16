@@ -162,7 +162,7 @@ Example:
 
 		switch formatType {
 		case "html":
-			tmplHtml := taishokuTodokeHTMLTemplate
+			tmplHtml := taishokuNegaiHTMLTemplate
 			if useTodoke {
 				tmplHtml = taishokuTodokeHTMLTemplate
 			}
