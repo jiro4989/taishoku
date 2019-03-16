@@ -13,6 +13,7 @@ func init() {
 	cobra.OnInitialize()
 	RootCommand.PersistentFlags().BoolVarP(&log.DebugFlag, "debug", "X", false, "debug logging flag.")
 	RootCommand.Flags().SortFlags = false
+	RootCommand.Flags().Bool("todoke", false, "taishoku todoke")
 	RootCommand.Flags().IntP("offset", "o", 3, "offset")
 	RootCommand.Flags().IntP("year", "y", 2999, "year")
 	RootCommand.Flags().IntP("month", "m", 12, "month")
@@ -78,6 +79,11 @@ Example:
 			panic(err)
 		}
 
+		useTodoke, err := f.GetBool("todoke")
+		if err != nil {
+			panic(err)
+		}
+
 		year, err := f.GetInt("year")
 		if err != nil {
 			panic(err)
@@ -137,11 +143,15 @@ Example:
 			department, team, yourName,
 			company, president, presidentName))
 
+		tmplText := taishokuNegai
+		if useTodoke {
+			tmplText = taishokuTodoke
+		}
 		taishokuDate := fmt.Sprintf("%d年%d月%d日", year, month, day)
 		taishokuDate = convertStringNumberToKanji(taishokuDate)
 		today := time.Now().Format("2006年1月2日")
 		today = convertStringNumberToKanji(today)
-		text := makeTaishokuText(taishokuDate, today, department, team, yourName, company, president, presidentName)
+		text := makeTaishokuText(tmplText, taishokuDate, today, department, team, yourName, company, president, presidentName)
 		printVertical(text, offset)
 
 		log.Debug("end 'taishoku'")

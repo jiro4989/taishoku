@@ -5,7 +5,7 @@ import (
 	"unicode/utf8"
 )
 
-const taishokuText = `
+const taishokuNegai = `
 　　　退　職　願
 　　　　　　　　　　　　　　　　　　　　　　　　　私議
 
@@ -20,9 +20,24 @@ const taishokuText = `
 {president}　{presidentName}
 `
 
-// makeTaishokuText は退職願テキストを生成する。
-func makeTaishokuText(taishokuDate, today, department, team, yourName, company, president, presidentName string) string {
-	text := taishokuText
+const taishokuTodoke = `
+　　　退　職　届
+　　　　　　　　　　　　　　　　　　　　　　　　　私議
+
+このたび一身上の都合により、{taishokuDate}をもって
+退職いたします。
+{today}
+
+　　　　　　　　　　　　　　{department}　{team}
+　　　　　　　　　　　　　　{yourName}　印
+
+{company}
+{president}　{presidentName}
+`
+
+// makeTaishokuText は退職テキストを生成する。
+func makeTaishokuText(templateText, taishokuDate, today, department, team, yourName, company, president, presidentName string) string {
+	text := templateText
 	convs := map[string]string{
 		"{taishokuDate}":  taishokuDate,
 		"{today}":         today,
