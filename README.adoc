@@ -5,6 +5,8 @@
 
 退職願をアスキーアートで出力するコマンド
 
+image:https://travis-ci.org/jiro4989/taishoku.svg?branch=master["Build Status", link="https://travis-ci.org/jiro4989/taishoku"]
+
 == install
 
 [source,bash]
