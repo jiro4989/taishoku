@@ -90,31 +90,37 @@ Example:
 		if err != nil {
 			panic(err)
 		}
+		department = toZenkaku(department)
 
 		team, err := f.GetString("team")
 		if err != nil {
 			panic(err)
 		}
+		team = toZenkaku(team)
 
 		yourName, err := f.GetString("your-name")
 		if err != nil {
 			panic(err)
 		}
+		yourName = toZenkaku(yourName)
 
 		company, err := f.GetString("company")
 		if err != nil {
 			panic(err)
 		}
+		company = toZenkaku(company)
 
 		president, err := f.GetString("president")
 		if err != nil {
 			panic(err)
 		}
+		president = toZenkaku(president)
 
 		presidentName, err := f.GetString("president-name")
 		if err != nil {
 			panic(err)
 		}
+		presidentName = toZenkaku(presidentName)
 
 		taishokuDate := fmt.Sprintf("%d年%d月%d日", year, month, day)
 		taishokuDate = convertStringNumberToKanji(taishokuDate)
