@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"strings"
+	"unicode/utf8"
+)
 
 const taishokuText = `
 このたび一身上の都合により、{taishokuDate}をもって
@@ -52,4 +55,40 @@ func convertStringNumberToKanji(s string) string {
 		s = strings.Replace(s, k, v, -1)
 	}
 	return s
+}
+
+// padSpace は文字列のスライスのうち、一番長い文字列にあわせて全角空白を埋める。
+// 返却する文字列は新しい配列なので、引数に渡した配列に破壊的変更は与えない。
+func padSpace(s []string) []string {
+	text := s[:]
+
+	var maxLength int
+	// 一番長い文字列の長さを取得
+	for _, t := range text {
+		l := utf8.RuneCountInString(t)
+		if maxLength < l {
+			maxLength = l
+		}
+	}
+
+	// 一番長い文字列の長さに合わせて空白を追加
+	for i := 0; i < len(text); i++ {
+		diff := maxLength - utf8.RuneCountInString(text[i])
+		if 0 < diff {
+			pad := strings.Repeat("　", diff)
+			text[i] += pad
+		}
+	}
+
+	return text
+}
+
+func reverse(s []string) []string {
+	s2 := make([]string, len(s))
+	var j int
+	for i := len(s) - 1; 0 <= i; i-- {
+		s2[j] = s[i]
+		j++
+	}
+	return s2
 }
