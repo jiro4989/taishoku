@@ -12,23 +12,62 @@ import (
 
 func init() {
 	cobra.OnInitialize()
-	RootCommand.PersistentFlags().BoolVarP(&log.DebugFlag, "debug", "X", false, "Debug logging flag.")
+	RootCommand.PersistentFlags().BoolVarP(&log.DebugFlag, "debug", "X", false, "debug logging flag.")
+	RootCommand.Flags().SortFlags = false
 	RootCommand.Flags().IntP("year", "y", 2999, "year")
 	RootCommand.Flags().IntP("month", "m", 12, "month")
 	RootCommand.Flags().IntP("day", "d", 31, "day")
-	RootCommand.Flags().StringP("department", "D", "ジョークコマンド開発部", "day")
-	RootCommand.Flags().StringP("team", "T", "第一課", "day")
-	RootCommand.Flags().StringP("your-name", "n", "真面目田マジメ", "day")
-	RootCommand.Flags().StringP("company", "C", "株式会社ジョークコマンド", "day")
-	RootCommand.Flags().StringP("president", "P", "代表取締役", "day")
-	RootCommand.Flags().StringP("president-name", "N", "ジョーク山悪ふざけ太郎", "day")
+	RootCommand.Flags().StringP("department", "D", "ジョークコマンド開発部", "your department")
+	RootCommand.Flags().StringP("team", "T", "第一課", "your team")
+	RootCommand.Flags().StringP("your-name", "n", "真面目田マジメ", "your name")
+	RootCommand.Flags().StringP("company", "C", "株式会社ジョークコマンド", "company name")
+	RootCommand.Flags().StringP("president", "P", "代表取締役", "president")
+	RootCommand.Flags().StringP("president-name", "N", "ジョーク山悪ふざけ太郎", "president name")
 	// RootCommand.Flags().Bool("html", false, "output html")
 }
 
 var RootCommand = &cobra.Command{
 	Use:   "taishoku",
 	Short: "退職届を出力する",
-	Long:  "退職届けを出力する",
+	Long: `
+taishoku prints Japanese one's resignation ASCII Art.
+
+Repository: https://github.com/jiro4989/taishoku
+    Author: jiro4989
+
+Example:
+
+　　　代株　　　　二退こ　　　
+　　　表式　　　　〇職の　　　
+　　　取会　　　　一いた　　　
+　　　締社　　　　九たび　　退
+　　　役ジ　　　　年し一　　　
+　　　　ョ　　　　〇た身　　職
+　　　ジー　　　　三く上　　　
+　　　ョク　　　　月この　　願
+　　　ーコ　　　　一こ都　　　
+　　　クマ　　　　七に合　　　
+　　　山ン　　　　日おに　　　
+　　　悪ド　　　　　願よ　　　
+　　　ふ　　　　　　いり　　　
+　　　ざ　　　　　　申、　　　
+　　　け　　真ジ　　し二　　　
+　　　太　　面ョ　　上九　　　
+　　　郎　　目ー　　げ九　　　
+　　　　　　田ク　　ま九　　　
+　　　　　　マコ　　す年　　　
+　　　　　　ジマ　　。一　　　
+　　　　　　メン　　　二　　　
+　　　　　　　ド　　　月　　　
+　　　　　　印開　　　三　　　
+　　　　　　　発　　　一　　　
+　　　　　　　部　　　日　　　
+　　　　　　　　　　　を　私　
+　　　　　　　第　　　も　議　
+　　　　　　　一　　　っ　　　
+　　　　　　　課　　　て　　　
+
+	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Debug("start 'taishoku'")
 		f := cmd.Flags()
