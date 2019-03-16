@@ -3,7 +3,8 @@
 
 = taishoku
 
-退職願をアスキーアートで出力するコマンド
+退職願をアスキーアートで出力するコマンド。
+HTML出力もできる。
 
 image:https://travis-ci.org/jiro4989/taishoku.svg?branch=master["Build Status", link="https://travis-ci.org/jiro4989/taishoku"]
 
@@ -66,6 +67,12 @@ echo taishoku >> ~/.bashrc
 .そのまま使う
 [source,bash]
 taishoku --your-name 退職太郎 -y 2019 -m 1 -d 1
+
+.HTML出力
+[source,bash]
+taishoku --format html > taishoku_negai.html
+
+image::img/html.png[退職願]
 
 == help
 
