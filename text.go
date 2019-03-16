@@ -6,6 +6,9 @@ import (
 )
 
 const taishokuText = `
+　　　退　職　願
+　　　　　　　　　　　　　　　　　　　　　　　　　私議
+
 このたび一身上の都合により、{taishokuDate}をもって
 退職いたしたくここにお願い申し上げます。
 {today}
