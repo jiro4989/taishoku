@@ -133,7 +133,7 @@ Example:
 
 		taishokuDate := fmt.Sprintf("%d年%d月%d日", year, month, day)
 		taishokuDate = convertStringNumberToKanji(taishokuDate)
-		today := time.Now().Format("2006年01月02日")
+		today := time.Now().Format("2006年1月2日")
 		today = convertStringNumberToKanji(today)
 		text := makeTaishokuText(taishokuDate, today, department, team, yourName, company, president, presidentName)
 		printVertical(text, 3)
