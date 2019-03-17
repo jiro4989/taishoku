@@ -198,12 +198,10 @@ func toVertical(s []string) (ret []string) {
 	for i := 0; i < l; i++ {
 		var line []string
 		for _, row := range s {
-			var colIdx int // rangeで指定する数値は配列の印字ではないため
-			for _, c := range row {
+			for colIdx, c := range []rune(row) {
 				if colIdx == i {
 					line = append(line, string(c))
 				}
-				colIdx++
 			}
 		}
 		if len(line) == 0 {
