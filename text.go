@@ -202,9 +202,6 @@ func toVertical(s []string) (ret []string) {
 				}
 			}
 		}
-		if len(line) == 0 {
-			continue
-		}
 		line = reverse(line)
 		s := strings.Join(line, "")
 		ret = append(ret, s)
