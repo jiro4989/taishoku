@@ -179,10 +179,8 @@ func padSpace(s []string) []string {
 // 文字順で逆順ソートとかしたりはしない。
 func reverse(s []string) []string {
 	s2 := make([]string, len(s))
-	var j int
-	for i := len(s) - 1; 0 <= i; i-- {
+	for i, j := len(s)-1, 0; 0 <= i; i, j = i-1, j+1 {
 		s2[j] = s[i]
-		j++
 	}
 	return s2
 }
