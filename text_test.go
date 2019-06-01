@@ -26,5 +26,7 @@ func TestToVertical(t *testing.T) {
 	assert.Equal(t, []string{"a", "b"}, toVertical([]string{"ab"}))
 	assert.Equal(t, []string{"ca", "db"}, toVertical([]string{"ab", "cd"}))
 	assert.Equal(t, []string{"うあ", "えい"}, toVertical([]string{"あい", "うえ"}))
+	assert.Equal(t, []string{"｜あ", "｜い"}, toVertical([]string{"あい", "ーー"}), "伸ばし棒は縦棒に変換")
+	assert.Equal(t, []string{"一あ", "｜い"}, toVertical([]string{"あい", "一ー"}), "漢字の一は変わらない")
 	assert.Equal(t, []string{}, toVertical([]string{}))
 }

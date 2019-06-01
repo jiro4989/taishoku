@@ -187,6 +187,7 @@ func reverse(s []string) []string {
 
 // toVertical は横書き文字列配列を縦書き配列に変換する。
 // 前提として、引数の配列はrune文字列としてすべて長さが同じでなければならない。
+// また、横棒を縦棒に変換する。
 func toVertical(s []string) (ret []string) {
 	if len(s) < 1 {
 		return []string{}
@@ -204,6 +205,7 @@ func toVertical(s []string) (ret []string) {
 		}
 		line = reverse(line)
 		s := strings.Join(line, "")
+		s = strings.Replace(s, "ー", "｜", -1)
 		ret = append(ret, s)
 	}
 	return
