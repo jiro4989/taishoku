@@ -166,6 +166,7 @@ Example:
 			if useTodoke {
 				tmplHtml = taishokuTodokeHTMLTemplate
 			}
+			tmplHtml = strings.Replace(tmplHtml, "ー", "｜", -1)
 			t, err := template.New("template").Parse(tmplHtml)
 			if err != nil {
 				panic(err)
