@@ -137,3 +137,9 @@ Flags:
   -X, --debug                   debug logging flag.
   -h, --help                    help for taishoku
 ```
+
+== web page
+
+`taishoku --format html` で生成されるHTMLをGitHubPagesで閲覧できるようにした。
+
+https://jiro4989.github.io/taishoku/index.html[退職願ページ]
